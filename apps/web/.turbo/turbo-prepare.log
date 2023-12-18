@@ -1,0 +1,120 @@
+[contracts] npm WARN ignoring workspace config at /home/haider/work/uniswap/uniswap-interface-2/apps/web/.npmrc 
+[contracts] 
+[contracts] > @uniswap/interface@1.1.0 contracts
+[contracts] > yarn contracts:compile:abi && yarn contracts:compile:v3
+[contracts] 
+[i18n] npm WARN ignoring workspace config at /home/haider/work/uniswap/uniswap-interface-2/apps/web/.npmrc 
+[i18n] 
+[i18n] > @uniswap/interface@1.1.0 i18n
+[i18n] > yarn i18n:extract --clean && yarn i18n:compile
+[i18n] 
+[graphql] npm WARN ignoring workspace config at /home/haider/work/uniswap/uniswap-interface-2/apps/web/.npmrc 
+[graphql] 
+[graphql] > @uniswap/interface@1.1.0 graphql
+[graphql] > yarn graphql:fetch && yarn graphql:generate
+[graphql] 
+[ajv] npm WARN ignoring workspace config at /home/haider/work/uniswap/uniswap-interface-2/apps/web/.npmrc 
+[ajv] 
+[ajv] > @uniswap/interface@1.1.0 ajv
+[ajv] > node scripts/compile-ajv-validators.js
+[ajv] 
+[ajv] node:internal/fs/utils:350
+[ajv]     throw err;
+[ajv]     ^
+[ajv] 
+[ajv] Error: ENOENT: no such file or directory, open '/home/haider/work/uniswap/uniswap-interface-2/apps/web/src/utils/__generated__/validateTokenList.js'
+[ajv]     at Object.openSync (node:fs:603:3)
+[ajv]     at Object.writeFileSync (node:fs:2324:35)
+[ajv]     at Object.<anonymous> (/home/haider/work/uniswap/uniswap-interface-2/apps/web/scripts/compile-ajv-validators.js:14:4)
+[ajv]     at Module._compile (node:internal/modules/cjs/loader:1256:14)
+[ajv]     at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+[ajv]     at Module.load (node:internal/modules/cjs/loader:1119:32)
+[ajv]     at Module._load (node:internal/modules/cjs/loader:960:12)
+[ajv]     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+[ajv]     at node:internal/main/run_main_module:23:47 {
+[ajv]   errno: -2,
+[ajv]   syscall: 'open',
+[ajv]   code: 'ENOENT',
+[ajv]   path: '/home/haider/work/uniswap/uniswap-interface-2/apps/web/src/utils/__generated__/validateTokenList.js'
+[ajv] }
+[ajv] 
+[ajv] Node.js v18.17.1
+[ajv] npm ERR! Lifecycle script `ajv` failed with error: 
+[ajv] npm ERR! Error: command failed 
+npm ERR!   in workspace: @uniswap/interface@1.1.0 
+[ajv] npm ERR!   at location: /home/haider/work/uniswap/uniswap-interface-2/apps/web 
+[ajv] npm run ajv exited with code 1
+[contracts] Successfully generated 30 typings!
+[graphql] [STARTED] Parse Configuration
+[graphql] [SUCCESS] Parse Configuration
+[graphql] [STARTED] Generate outputs
+[graphql] [STARTED] Generate to src/graphql/data/__generated__/types-and-hooks.ts
+[graphql] [STARTED] Load GraphQL schemas
+[graphql] [SUCCESS] Load GraphQL schemas
+[graphql] [STARTED] Load GraphQL documents
+[graphql] [SUCCESS] Load GraphQL documents
+[graphql] [STARTED] Generate
+[graphql] [SUCCESS] Generate
+[graphql] [SUCCESS] Generate to src/graphql/data/__generated__/types-and-hooks.ts
+[graphql] [SUCCESS] Generate outputs
+[contracts] Successfully generated 218 typings!
+[i18n] ✔ 
+[i18n] Catalog statistics for src/locales/{locale}: 
+[i18n] ┌────────────────┬─────────────┬─────────┐
+[i18n] │ Language       │ Total count │ Missing │
+[i18n] ├────────────────┼─────────────┼─────────┤
+[i18n] │ af-ZA          │     917     │   917   │
+[i18n] │ ar-SA          │     917     │   917   │
+[i18n] │ ca-ES          │     917     │   917   │
+[i18n] │ cs-CZ          │     917     │   917   │
+[i18n] │ da-DK          │     917     │   917   │
+[i18n] │ el-GR          │     917     │   917   │
+[i18n] │ en-US (source) │     917     │    -    │
+[i18n] │ es-ES          │     917     │   917   │
+[i18n] │ fi-FI          │     917     │   917   │
+[i18n] │ fr-FR          │     917     │   917   │
+[i18n] │ he-IL          │     917     │   917   │
+[i18n] │ hu-HU          │     917     │   917   │
+[i18n] │ id-ID          │     917     │   917   │
+[i18n] │ i        │     917     │   917   │
+[i18n] │ sv-SE          │     917     │   917   │
+[i18n] │ sw-TZ          │     917     │   917   │
+[i18n] │ tr-TR          │     917     │   917   │
+[i18n] │ uk-UA          │     917     │   917   │
+[i18n] │ vi-VN          │     917     │   917   │
+[i18n] │ zh-CN          │     917     │   917   │
+[i18n] │ zh-TW          │     917     │   917   │
+[i18n] └────────────────┴─────────────┴─────────┘
+[i18n] 
+[i18n] (use "yarn i18n:extract" to update catalogs with new messages)
+[i18n] (use "yarn i18n:compile" to compile catalogs for production)
+[graphql] [STARTED] Parse Configuration
+[graphql] [SUCCESS] Parse Configuration
+[graphql] [STARTED] Generate outputs
+[graphql] [STARTED] Generate to src/graphql/data/__generated__/types-and-hooks.ts
+[graphql] [STARTED] Load GraphQL schemas
+[graphql] [SUCCESS] Load GraphQL schemas
+[graphql] [STARTED] Load GraphQL documents
+[graphql] [SUCCESS] Load GraphQL documents
+[graphql] [STARTED] Generate
+[graphql] [SUCCESS] Generate
+[graphql] [SUCCESS] Generate to src/graphql/data/__generated__/types-and-hooks.ts
+[graphql] [SUCCESS] Generate outputs
+[contracts] Successfully generated 218 typings!
+[contracts] npm run contracts exited with code 0
+[i18n] Compiling message catalogs...
+[i18n] Done!
+[i18n] npm run i18n exited with code 0
+[graphql] [STARTED] Parse Configuration
+[graphql] [SUCCESS] Parse Configuration
+[graphql] [STARTED] Generate outputs
+[graphql] [STARTED] Generate to src/graphql/thegraph/__generated__/types-and-hooks.ts
+[graphql] [STARTED] Load GraphQL schemas
+[graphql] [SUCCESS] Load GraphQL schemas
+[graphql] [STARTED] Load GraphQL documents
+[graphql] [SUCCESS] Load GraphQL documents
+[graphql] [STARTED] Generate
+[graphql] [SUCCESS] Generate
+[graphql] [SUCCESS] Generate to src/graphql/thegraph/__generated__/types-and-hooks.ts
+[graphql] [SUCCESS] Generate outputs
+[graphql] npm run graphql exited with code 0
