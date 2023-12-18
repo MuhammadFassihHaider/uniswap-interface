@@ -69,6 +69,7 @@ import { useIsDarkMode } from '../../theme/components/ThemeToggle'
 import { OutputTaxTooltipBody } from './TaxTooltipBody'
 import { UniswapXOptIn } from './UniswapXOptIn'
 
+<<<<<<< Updated upstream:src/pages/Swap/index.tsx
 export const ArrowContainer = styled.div`
   display: inline-flex;
   align-items: center;
@@ -128,6 +129,11 @@ function getIsReviewableQuote(
   if (isPreviewTrade(trade)) return true
 
   return Boolean(trade && tradeState === TradeState.VALID)
+=======
+interface SwapFormProps {
+  disableTokenInputs?: boolean
+  onCurrencyChange?: (selected: Pick<SwapState, Field.INPUT | Field.OUTPUT>) => void
+>>>>>>> Stashed changes:apps/web/src/pages/Swap/SwapForm.tsx
 }
 
 function largerPercentValue(a?: Percent, b?: Percent) {
@@ -193,8 +199,17 @@ export function Swap({
   const trace = useTrace()
 
   // token warning stuff
+<<<<<<< Updated upstream:src/pages/Swap/index.tsx
   const prefilledInputCurrency = useCurrency(initialInputCurrencyId, chainId)
   const prefilledOutputCurrency = useCurrency(initialOutputCurrencyId, chainId)
+=======
+  const parsedQs = useParsedQueryString()
+  const prefilledCurrencies = useMemo(() => {
+    return queryParametersToSwapState(parsedQs)
+  }, [parsedQs])
+  const prefilledInputCurrency = useCurrency(prefilledCurrencies?.[Field.INPUT]?.currencyId, chainId)
+  const prefilledOutputCurrency = useCurrency(prefilledCurrencies?.[Field.OUTPUT]?.currencyId, chainId)
+>>>>>>> Stashed changes:apps/web/src/pages/Swap/SwapForm.tsx
 
   const [loadedInputCurrency, setLoadedInputCurrency] = useState(prefilledInputCurrency)
   const [loadedOutputCurrency, setLoadedOutputCurrency] = useState(prefilledOutputCurrency)
@@ -407,6 +422,42 @@ export function Swap({
     swapResult: undefined,
   })
 
+<<<<<<< Updated upstream:src/pages/Swap/index.tsx
+=======
+  const previousConnectedChainId = usePrevious(connectedChainId)
+  const previousPrefilledState = usePrevious(prefilledState)
+  useEffect(() => {
+    const combinedInitialState = { ...initialSwapState, ...prefilledState }
+    const chainChanged = previousConnectedChainId && previousConnectedChainId !== connectedChainId
+    const prefilledInputChanged =
+      previousPrefilledState &&
+      previousPrefilledState?.[Field.INPUT]?.currencyId !== prefilledState?.[Field.INPUT]?.currencyId
+    const prefilledOutputChanged =
+      previousPrefilledState &&
+      previousPrefilledState?.[Field.OUTPUT]?.currencyId !== prefilledState?.[Field.OUTPUT]?.currencyId
+    if (chainChanged || prefilledInputChanged || prefilledOutputChanged) {
+      setSwapState({
+        ...initialSwapState,
+        ...prefilledState,
+        independentField: combinedInitialState.independentField ?? Field.INPUT,
+        [Field.INPUT]: {
+          currencyId: combinedInitialState.INPUT.currencyId ?? undefined,
+        },
+        [Field.OUTPUT]: {
+          currencyId: combinedInitialState.OUTPUT.currencyId ?? undefined,
+        },
+      })
+      // reset local state
+      setSwapFormState({
+        tradeToConfirm: undefined,
+        swapError: undefined,
+        showConfirm: false,
+        swapResult: undefined,
+      })
+    }
+  }, [connectedChainId, prefilledState, previousConnectedChainId, previousPrefilledState, setSwapState])
+
+>>>>>>> Stashed changes:apps/web/src/pages/Swap/SwapForm.tsx
   const { formatCurrencyAmount } = useFormatter()
   const formattedAmounts = useMemo(
     () => ({
@@ -551,7 +602,11 @@ export function Swap({
         [Field.INPUT]: {
           currencyId: getSwapCurrencyId(inputCurrency),
         },
+<<<<<<< Updated upstream:src/pages/Swap/index.tsx
         [Field.OUTPUT]: state[Field.OUTPUT],
+=======
+        [Field.OUTPUT]: swapState[Field.OUTPUT],
+>>>>>>> Stashed changes:apps/web/src/pages/Swap/SwapForm.tsx
       })
       maybeLogFirstSwapAction(trace)
     },
@@ -568,7 +623,11 @@ export function Swap({
     (outputCurrency: Currency) => {
       onCurrencySelection(Field.OUTPUT, outputCurrency)
       onCurrencyChange?.({
+<<<<<<< Updated upstream:src/pages/Swap/index.tsx
         [Field.INPUT]: state[Field.INPUT],
+=======
+        [Field.INPUT]: swapState[Field.INPUT],
+>>>>>>> Stashed changes:apps/web/src/pages/Swap/SwapForm.tsx
         [Field.OUTPUT]: {
           currencyId: getSwapCurrencyId(outputCurrency),
         },
@@ -756,6 +815,7 @@ export function Swap({
             <ButtonPrimary $borderRadius="16px" disabled={true}>
               <Trans>Connecting to {getChainInfo(switchingChain)?.label}</Trans>
             </ButtonPrimary>
+            
           ) : connectionReady && !account ? (
             <TraceEvent
               events={[BrowserEvent.onClick]}
@@ -763,7 +823,7 @@ export function Swap({
               properties={{ received_swap_quote: getIsReviewableQuote(trade, tradeState, swapInputError) }}
               element={InterfaceElementName.CONNECT_WALLET_BUTTON}
             >
-              <ButtonLight onClick={toggleWalletDrawer} fontWeight={535} $borderRadius="16px">
+              <ButtonLight style={{background:"#6E42CA"}} onClick={toggleWalletDrawer} fontWeight={535} $borderRadius="16px">
                 <Trans>Connect wallet</Trans>
               </ButtonLight>
             </TraceEvent>

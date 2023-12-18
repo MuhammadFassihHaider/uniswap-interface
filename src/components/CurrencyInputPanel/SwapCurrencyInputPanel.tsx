@@ -337,6 +337,7 @@ const SwapCurrencyInputPanel = forwardRef<HTMLInputElement, SwapCurrencyInputPan
                   disabled={!chainAllowed || disabled}
                   visible={currency !== undefined}
                   selected={!!currency}
+                  style={{background:"#6E42CA",border:0 ,color:"#FFFFFF"}}
                   hideInput={hideInput}
                   className="open-currency-select-button"
                   onClick={() => {
