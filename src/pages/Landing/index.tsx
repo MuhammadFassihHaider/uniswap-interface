@@ -12,7 +12,7 @@ import { AppleLogo } from 'components/Logo/AppleLogo'
 import { useAndroidGALaunchFlagEnabled } from 'featureFlags/flags/androidGALaunch'
 import { useDisableNFTRoutes } from 'hooks/useDisableNFTRoutes'
 import Swap from 'pages/Swap'
-import { parse } from 'qs'
+import { parse } from 'qs'  
 import { useEffect, useMemo, useRef } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { Link as NativeLink } from 'react-router-dom'
@@ -24,7 +24,7 @@ import { TRANSITION_DURATIONS } from 'theme/styles'
 import { Z_INDEX } from 'theme/zIndex'
 import { getDownloadAppLinkProps } from 'utils/openDownloadApp'
 
-const PageContainer = styled.div`
+const PageContainer = styled.div<{ isDarkMode: boolean }>`
   position: absolute;
   top: 0;
   padding: ${({ theme }) => theme.navHeight}px 0px 0px 0px;
@@ -33,6 +33,13 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   scroll-behavior: smooth;
+  ${({ isDarkMode }) =>
+  isDarkMode
+    ? css`
+        background: #28253E;
+      `
+    : css``};
+
   overflow-x: hidden;
 `
 
@@ -75,12 +82,25 @@ const GlowContainer = styled.div`
     height: 100vh;
   }
 `
+// 28253E
 
-const Glow = styled.div`
+const Glow = styled.div<{ isDarkMode: boolean }>`
   position: absolute;
   top: 68px;
   bottom: 0;
-  background: radial-gradient(72.04% 72.04% at 50% 3.99%, #ff37eb 0%, rgba(166, 151, 255, 0) 100%);
+
+  ${({ isDarkMode }) =>
+  isDarkMode
+    ? css`
+    radial-gradient(72.04% 72.04% at 50% 3.99%, #28253E 0%, rgba(166, 151, 255, 0) 100%);
+      `
+    : css`
+    background: linear-gradient(10deg,rgb(110, 66, 202) 0%,rgb(110, 66, 202) 100%);
+      `};
+
+      
+
+
   filter: blur(72px);
   border-radius: 24px;
   max-width: 480px;
@@ -134,10 +154,10 @@ const TitleText = styled.h1<{ isDarkMode: boolean }>`
   ${({ isDarkMode }) =>
     isDarkMode
       ? css`
-          background: linear-gradient(20deg, rgba(255, 244, 207, 1) 10%, rgba(255, 87, 218, 1) 100%);
+          background:linear-gradient(20deg, rgb(255, 244, 207) 10%, rgb(255, 255, 255) 100%);
         `
       : css`
-          background: linear-gradient(10deg, rgba(255, 79, 184, 1) 0%, rgba(255, 159, 251, 1) 100%);
+      background: linear-gradient(10deg,rgb(110, 66, 202) 0%,rgb(110, 66, 202) 100%);
         `};
   background-clip: text;
   -webkit-background-clip: text;
@@ -179,13 +199,13 @@ const LandingButton = styled(BaseButton)`
 `
 
 const ButtonCTA = styled(LandingButton)`
-  background: linear-gradient(93.06deg, #ff00c7 2.66%, #ff9ffb 98.99%);
+  background: linear-gradient(93.06deg, #6E42CA 2.66%, #6E42CA 98.99%);
   border: none;
   color: ${({ theme }) => theme.white};
   transition: ${({ theme }) => `all ${theme.transition.duration.medium} ${theme.transition.timing.ease}`};
 
   &:hover {
-    box-shadow: 0px 0px 16px 0px #ff00c7;
+    box-shadow: 0px 0px 16px 0px #6E42CA;
   }
 `
 
@@ -343,7 +363,7 @@ export default function Landing() {
 
   return (
     <Trace page={InterfacePageName.LANDING_PAGE} shouldLogImpression>
-      <PageContainer data-testid="landing-page">
+      <PageContainer  isDarkMode={isDarkMode} data-testid="landing-page">
         <LandingSwapContainer>
           <TraceEvent
             events={[BrowserEvent.onClick]}
@@ -357,14 +377,14 @@ export default function Landing() {
         </LandingSwapContainer>
         <Gradient isDarkMode={isDarkMode} />
         <GlowContainer>
-          <Glow />
+          <Glow  isDarkMode={isDarkMode}/>
         </GlowContainer>
         <ContentContainer isDarkMode={isDarkMode}>
           <TitleText isDarkMode={isDarkMode}>
             {shouldDisableNFTRoutes ? (
               <Trans>Trade crypto with confidence</Trans>
             ) : (
-              <Trans>Trade crypto and NFTs with confidence</Trans>
+              <Trans >Trade crypto and NFTs with confidence</Trans>
             )}
           </TitleText>
           <SubTextContainer>
