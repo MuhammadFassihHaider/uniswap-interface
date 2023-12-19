@@ -312,5 +312,6 @@
     "npm": "please-use-yarn",
     "node": "18.x",
     "yarn": ">=1.22"
-  }
+  },
+  "packageManager": "yarn@3.6.3"
 }

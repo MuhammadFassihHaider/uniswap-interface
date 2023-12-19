@@ -131,7 +131,7 @@ const StyledConnectButton = styled.button`
   font-weight: 535;
   font-size: 16px;
   padding: 10px 12px;
-  color: inherit;
+  color: white;
 `
 
 function Web3StatusInner() {

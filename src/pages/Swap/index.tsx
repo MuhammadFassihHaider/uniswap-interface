@@ -764,7 +764,7 @@ export function Swap({
               properties={{ received_swap_quote: getIsReviewableQuote(trade, tradeState, swapInputError) }}
               element={InterfaceElementName.CONNECT_WALLET_BUTTON}
             >
-              <ButtonLight style={{background:"#6E42CA"}} onClick={toggleWalletDrawer} fontWeight={535} $borderRadius="16px">
+              <ButtonLight style={{background:"#6E42CA" , color:"white"}} onClick={toggleWalletDrawer} fontWeight={535} $borderRadius="16px">
                 <Trans>Connect wallet</Trans>
               </ButtonLight>
             </TraceEvent>
