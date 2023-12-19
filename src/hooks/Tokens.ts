@@ -187,6 +187,7 @@ export function useIsUserAddedToken(currency: Currency | undefined | null): bool
 export function useToken(tokenAddress?: string | null): Token | null | undefined {
   const { chainId } = useWeb3React()
   const tokens = useDefaultActiveTokens(chainId)
+  console.log({ chainId, tokenAddress, tokens })
   return useTokenFromMapOrNetwork(tokens, tokenAddress)
 }
 

@@ -13,6 +13,7 @@ export const FEE_AMOUNT_DETAIL: Record<
     supportedChains: [
       ChainId.ARBITRUM_ONE,
       ChainId.BNB,
+      ChainId.BNB_TESTNET,
       ChainId.CELO,
       ChainId.CELO_ALFAJORES,
       ChainId.MAINNET,

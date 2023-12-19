@@ -36,11 +36,11 @@ const UNKNOWN_TOKEN_NAME = 'Unknown Token'
  */
 export function useTokenFromActiveNetwork(tokenAddress: string | undefined): Token | null | undefined {
   const { chainId } = useWeb3React()
-
   const formattedAddress = isAddress(tokenAddress)
+  console.log({ formattedAddress, tokenAddress })
   const tokenContract = useTokenContract(formattedAddress ? formattedAddress : undefined, false)
   const tokenContractBytes32 = useBytes32TokenContract(formattedAddress ? formattedAddress : undefined, false)
-
+  // console.log({ tokenContract })
   // TODO (WEB-1709): reduce this to one RPC call instead of 5
   // TODO: Fix redux-multicall so that these values do not reload.
   const tokenName = useSingleCallResult(tokenContract, 'name', undefined, NEVER_RELOAD)
@@ -48,7 +48,7 @@ export function useTokenFromActiveNetwork(tokenAddress: string | undefined): Tok
   const symbol = useSingleCallResult(tokenContract, 'symbol', undefined, NEVER_RELOAD)
   const symbolBytes32 = useSingleCallResult(tokenContractBytes32, 'symbol', undefined, NEVER_RELOAD)
   const decimals = useSingleCallResult(tokenContract, 'decimals', undefined, NEVER_RELOAD)
-
+  console.log({ tokenName, tokenNameBytes32, symbol, symbolBytes32, decimals })
   const isLoading = useMemo(
     () => decimals.loading || symbol.loading || tokenName.loading,
     [decimals.loading, symbol.loading, tokenName.loading]
@@ -83,6 +83,8 @@ type TokenMap = { [address: string]: Token }
 export function useTokenFromMapOrNetwork(tokens: TokenMap, tokenAddress?: string | null): Token | undefined {
   const address = isAddress(tokenAddress)
   const token: Token | undefined = address ? tokens[address] : undefined
+  console.log({ token, address })
+  console.log('CONDITION', token ? undefined : address ? address : undefined)
   const tokenFromNetwork = useTokenFromActiveNetwork(token ? undefined : address ? address : undefined)
 
   useEffect(() => {
@@ -119,7 +121,7 @@ export function useCurrencyFromMap(
     const chain = asSupportedChain(chainId)
     return chain && currencyId ? TOKEN_SHORTHANDS[currencyId.toUpperCase()]?.[chain] : undefined
   }, [chainId, currencyId])
-
+  console.log('all tokens', { tokens })
   const token = useTokenFromMapOrNetwork(tokens, isNative ? undefined : shorthandMatchAddress ?? currencyId)
 
   if (currencyId === null || currencyId === undefined || !isSupportedChain(chainId)) return

@@ -75,6 +75,12 @@ export function getChainUI(chainId: ChainId, darkMode: boolean): ChainUI | undef
         bgColor: '#EAB20033',
         textColor: '#EAB200',
       }
+    case ChainId.BNB_TESTNET:
+      return {
+        Symbol: bnb,
+        bgColor: '#EAB20033',
+        textColor: '#EAB200',
+      }
     case ChainId.BASE:
       return {
         Symbol: base,

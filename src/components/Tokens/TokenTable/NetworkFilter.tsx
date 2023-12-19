@@ -189,7 +189,7 @@ export default function NetworkFilter() {
                 }}
               >
                 <NetworkLabel>
-                  <ChainLogo chainId={chainId} size={20} /> {chainInfo.label}
+                  <ChainLogo chainId={chainId ?? 1} size={20} /> {chainInfo?.label ?? ''}
                 </NetworkLabel>
                 {network === currentChainName && (
                   <CheckContainer>

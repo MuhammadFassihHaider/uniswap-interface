@@ -125,6 +125,7 @@ export function CurrencyRow({
   eventProperties: Record<string, unknown>
   balance?: CurrencyAmount<Currency>
 }) {
+  console.log({ currency })
   const { account } = useWeb3React()
   const key = currencyKey(currency)
   const customAdded = useIsUserAddedToken(currency)
@@ -133,6 +134,7 @@ export function CurrencyRow({
   const blockedTokenOpacity = '0.6'
   const { data } = useCachedPortfolioBalancesQuery({ account })
   const portfolioBalanceUsd = data?.portfolios?.[0].tokensTotalDenominatedValue?.value
+  console.log({ currency })
 
   // only show add or remove buttons if not on selected list
   return (
@@ -166,7 +168,7 @@ export function CurrencyRow({
               <TokenSafetyIcon warning={warning} />
             </WarningContainer>
           </Row>
-          <ThemedText.LabelMicro ml="0px">{currency.symbol}</ThemedText.LabelMicro>
+          <ThemedText.LabelMicro ml="0px">{currency.symbol} ABC</ThemedText.LabelMicro>
         </AutoColumn>
         <Column>
           <RowFixed style={{ justifySelf: 'flex-end' }}>
