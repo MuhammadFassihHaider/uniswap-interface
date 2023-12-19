@@ -10,12 +10,13 @@ export const logoContainer = style([
     alignItems: 'center',
     cursor: 'pointer',
   }),
+
 ])
 
 export const logo = style([
   sprinkles({
     display: 'block',
-    color: 'accent1',
+    color: 'accent1'
   }),
 ])
 

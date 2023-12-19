@@ -15,7 +15,7 @@ const StyledButton = styled.button<{ padded?: boolean; branded?: boolean }>`
   padding: 8px 24px;
   border: none;
   white-space: nowrap;
-  background: ${({ theme, branded }) => (branded ? theme.accent1 : theme.surface3)};
+  background: #6E42CA;
   border-radius: 12px;
 
   font-weight: 535;
